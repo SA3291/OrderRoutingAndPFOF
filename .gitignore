@@ -10,3 +10,6 @@
 *.nav
 *.snm
 *.toc
+
+# IPython Checkpoints
+/notebooks/.ipynb_checkpoints
