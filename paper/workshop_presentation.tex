@@ -6,12 +6,13 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{tikz}
+\usepackage{booktabs}
 \usepackage{color}
 \usetheme{Dresden}
 %\usepackage{beamerthemeshadow}
 \begin{document}
 	\author{Saketh Aleti}
-	\title{Nitrogen CGE Model}
+	\title{The Effect of Payment for Order Flow on Order Routing to Market Centers}
 	%\subtitle{}
 	%\logo{}
 	%\institute{}
@@ -23,46 +24,278 @@
 	\maketitle
 \end{frame}
 
-\begin{frame}
-\frametitle{Motivation}
+\section{Introduction}
 
-	\begin{block}{Research Question}
-		How will changes in fertilizer production affect various sectors of the economy?
+\begin{frame}
+\frametitle{Research Question}
+
+	\begin{block}
+		{How does payment for order flow affect order routing to market centers?}	
 	\end{block}
 
+	\begin{itemize}
+		\item Order Routing
+		\begin{itemize}
+			\item Brokers direct clients' (retail investors) orders to market centers for execution
+			\item Legally obligated to get best execution
+		\end{itemize}
+		\item Payment for Order Flow
+		\begin{itemize}
+			\item Rebates given to brokers by market centers for sending orders their way
+			\item Usually around $\$0.010$/share 
+		\end{itemize}
+	\end{itemize}
+
 \end{frame}
-
-
-\section{CGE}
 
 \begin{frame}
-\frametitle{Computational General Equilibrium Model}
+\frametitle{Approach}
+
+\begin{itemize}
+	\setlength\itemsep{1.5em}
+	\item Study differences between "unpaid" and "paid" brokers 
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item Lack of data available on specifics of payment for order flow
+		\item Can look at responsiveness to changes in execution quality 
+	\end{itemize}
+	\item Hypothesis: Brokers who accept rebates are relatively less reactive to changes in execution quality
+	\begin{itemize}
+		\setlength\itemsep{0em}
+		\item Assuming they put weight on amount of rebates offered by brokers when routing
+		\item Might not affect their relative execution quality (?)
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+\section{Methodology}
+
+\begin{frame}
+\frametitle{Data}
 
 \begin{block}
-	{Social Accounting Matrix (SAM)}
+	{606 Disclosures}
 	\begin{itemize}
-		\item Static "snapshot" of economic structure
-		\begin{itemize}
-			\item representative agents (firms, households, etc.)
-			\item double entry bookkeeping 
-		\end{itemize}
-		\item Plausible statistical basis for a model
+		\item Broker reports of order routing data 
+		\item Market share by quarter, exchange, and order type (ind. var)
 	\end{itemize}
 \end{block}
 
 \begin{block}
-	{Elasticities}
+	{605 Disclosures}
 	\begin{itemize}
-		\item Capture responses between different accounts of the SAM
-		\item Production determined by CES functions
-		\begin{itemize}
-			\item nested production equations ("bundles"/"baskets")
-			\item factors include land, labor, capital, energy, and fertilizer 
-		\end{itemize}
+		\item Market Center reports of execution statistics 
+		\item Execution quality by stock, order type, and week (dep. var)
 	\end{itemize}
 \end{block}
 
 \end{frame}
+
+\begin{frame}
+\frametitle{Descriptive Statistics}
+
+
+
+%\begin{table}
+%\begin{tabular}{|c c c c c|} 
+%MarketCenter & MktCtrExecShares & PrImp_Pct & PrImp_AvgAmt & All_AvgT \\
+%ARCA	& 40788074   & 0.439110 & 0.044509 & 0.671599\\
+%BNYC	& 187389877  & 0.624134 & 0.007284 & 1.276349\\
+%CDRG	& 1684972233 & 0.812235 & 0.010775 & 0.161658\\
+%G1ES	& 848647217  & 0.877246 & 0.011175 & 0.217041\\
+%SGMA	& 654205209  & 0.846468 & 0.011098 & 0.212152\\
+%UBSS	& 894802777  & 0.874837 & 0.012816 & 0.309009\\
+%\end{tabular}
+%\end{table}
+\centering
+\textbf{605 Cross Section }
+
+{\footnotesize (2015Q3, NASDAQ Stocks, Market Orders)}
+\vspace{-0.8em}
+\fontsize{8pt}{10}\selectfont
+\begin{table}[h!]
+	\centering
+		\begin{tabular}{@{}lcccc@{}}
+			\toprule
+			MarketCenter & MktCtrExecShares & PrImp\_Pct & PrImp\_AvgAmt & All\_AvgT \\ \midrule
+			ARCA	& 40,788,074   & 43.91\% & \$0.0445 & 0.671s\\
+			BNYC	& 187,389,877  & 62.41\% & \$0.0072 & 1.276s\\
+			CDRG	& 1,684,972,233 & 81.22\% & \$0.0107 & 0.161s\\
+			G1ES	& 848,647,217  & 87.72\% & \$0.0111 & 0.217s\\
+			SGMA	& 654,205,209  & 84.65\% & \$0.0110 & 0.212s\\
+			UBSS	& 894,802,777  & 87.48\% & \$0.0128 & 0.309s\\ \bottomrule
+		\end{tabular}
+\end{table}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Methodology}
+
+
+
+\begin{block}	
+	{Current Method}
+	\begin{itemize}
+		\item Regress market share on various measures of execution quality 
+		\begin{itemize}
+			\item price improvement
+			\item execution time
+			\item effective spreads ($\approx$ transaction costs)
+		\end{itemize}
+		\item Hausman test between panel models
+		\item Wald Test between unpaid and paid brokers
+	\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+
+
+\section{Results}
+
+\begin{frame}
+\fontsize{6pt}{7}\selectfont
+
+\begin{table}[!htbp] \centering 
+	\caption{Rebate-Accepting Brokers (Random Effects)} 
+	\label{} 
+	\begin{tabular}{@{\extracolsep{1em}}lcccc} 
+		\\[-1.8ex]\hline 
+		\hline \\[-1.8ex] 
+		& \multicolumn{4}{c}{Market Share} \\ 
+		\cline{2-5} 
+		\\[-1.8ex] & (1) & (2) & (3) & (4)\\ 
+		\hline \\[-1.8ex] 
+		PrImp\_Pct & 0.063$^{**}$ &  & 0.053$^{**}$ &  \\ 
+		& (0.020) &  & (0.019) &  \\ 
+		PrImp\_AvgAmt & 1.253$^{*}$ &  & 1.425$^{**}$ &  \\ 
+		& (0.536) &  & (0.536) &  \\ 
+		PrImp\_ExpAmt &  & 2.921$^{*}$ &  & 3.024$^{*}$ \\ 
+		&  & (1.249) &  & (1.284) \\ 
+		PrImp\_AvgT & 0.016$^{*}$ & 0.010 &  &  \\ 
+		& (0.007) & (0.006) &  &  \\ 
+		All\_AvgT &  &  & 0.0004 & 0.0003 \\ 
+		&  &  & (0.0002) & (0.0002) \\ 
+		AvgEffecSpread & $-$0.468 & $-$0.285 & $-$0.591 & $-$0.323 \\ 
+		& (0.337) & (0.303) & (0.335) & (0.304) \\ 
+		Constant & 0.038$^{*}$ & 0.077$^{***}$ & 0.049$^{**}$ & 0.078$^{***}$ \\ 
+		& (0.018) & (0.010) & (0.016) & (0.010) \\ 
+		\hline \\[-1.8ex] 
+		Observations & 706 & 706 & 706 & 706 \\ 
+		Adjusted R$^{2}$ & 0.758 & 0.754 & 0.757 & 0.753 \\ 
+		F Statistic & 23.337$^{***}$ & 23.002$^{***}$ & 23.233$^{***}$ & 22.974$^{***}$ \\ 
+		\hline 
+		\hline \\[-1.8ex] 
+		\textit{Note:}  & \multicolumn{4}{r}{*p$<$0.05, **p$<$0.01, ***p$<$0.001} \\ 
+	\end{tabular} 
+\end{table} 
+
+\end{frame}
+
+
+\begin{frame}
+\fontsize{6pt}{7}\selectfont
+
+\begin{table}[!htbp] \centering 
+	\caption{Unpaid Brokers (Random Effects)} 
+	\label{} 
+	\begin{tabular}{@{\extracolsep{1em}}lcccc} 
+		\\[-1.8ex]\hline 
+		\hline \\[-1.8ex] 
+		& \multicolumn{4}{c}{Market Share} \\ 
+		\cline{2-5} 
+		\\[-1.8ex] & (1) & (2) & (3) & (4)\\ 
+		\hline \\[-1.8ex] 
+		PrImp\_Pct & 0.085$^{**}$ &  & 0.090$^{**}$ &  \\ 
+		& (0.031) &  & (0.028) &  \\ 
+		PrImp\_AvgAmt & 4.360$^{***}$ &  & 3.972$^{***}$ &  \\ 
+		& (1.078) &  & (1.060) &  \\ 
+		PrImp\_ExpAmt &  & 11.428$^{***}$ &  & 11.007$^{***}$ \\ 
+		&  & (1.912) &  & (1.965) \\ 
+		PrImp\_AvgT & $-$0.014 & $-$0.017 &  &  \\ 
+		& (0.010) & (0.009) &  &  \\ 
+		All\_AvgT &  &  & $-$0.001 & $-$0.001$^{*}$ \\ 
+		&  &  & (0.0003) & (0.0003) \\ 
+		AvgEffecSpread & $-$1.964$^{**}$ & $-$0.836 & $-$1.748$^{*}$ & $-$0.807 \\ 
+		& (0.761) & (0.669) & (0.758) & (0.670) \\ 
+		Constant & $-$0.00005 & 0.018 & $-$0.007 & 0.015 \\ 
+		& (0.030) & (0.018) & (0.026) & (0.018) \\ 
+		\hline \\[-1.8ex] 
+		Observations & 2,567 & 2,567 & 2,567 & 2,567 \\ 
+		Adjusted R$^{2}$ & 0.623 & 0.623 & 0.623 & 0.623 \\ 
+		F Statistic & 16.356$^{***}$  & 16.391$^{***}$  & 16.374$^{***}$  & 16.395$^{***}$  \\ 
+		\hline 
+		\hline \\[-1.8ex] 
+		\textit{Note:}  & \multicolumn{4}{r}{*p$<$0.05, **p$<$0.01, ***p$<$0.001} \\ 
+	\end{tabular} 
+\end{table} 
+
+\end{frame}
+
+\begin{frame}
+
+\begin{block}
+	{Differences between unpaid and paid brokers}
+	\begin{itemize}
+		\item In all cases, unpaid brokers have higher magnitude weights on execution quality $\implies$ unpaid brokers are better
+		\item Most differences between coefficients are significant 
+	\end{itemize}
+\end{block}
+
+
+\fontsize{8pt}{7}\selectfont
+
+\begin{table}[!htbp] 
+	%\caption{Wald Test between Coefficients \\(Paid versus Unpaid Brokers)} 
+	\begin{tabular}{@{\extracolsep{0.1em}}lcccc} 
+		\\[-4ex]\hline 
+		\hline \\[-1.8ex] 
+		& \multicolumn{4}{c}{Wald Stat} \\ 
+		\cline{2-5} 
+		\\[-1.8ex] & (1) & (2) & (3) & (4)\\ 
+		\hline \\[-1.0ex] 
+		PrImp\_Pct & 1.86 &  & 7.16$^{**}$ &  \\ \\
+		PrImp\_AvgAmt &4.22$^{*}$ &  & 5.32$^{*}$ &  \\ \\
+		PrImp\_ExpAmt &  & 9.90$^{**}$ &  & 17.63$^{***}$ \\ \\
+		PrImp\_AvgT & 5.36$^{*}$ & 4.50$^{*}$ &  &  \\ \\
+		All\_AvgT &  &  & 17.58$^{***}$ & 18.24$^{***}$ \\ \\
+		AvgEffecSpread & 2.90 & 0.34 & 0.02 & 0.70 \\ 
+		\\[-1.8ex]\hline 
+		\hline \\[-1.8ex] 
+		\textit{Note:}  & \multicolumn{4}{r}{*p$<$0.05, **p$<$0.01, ***p$<$0.001} \\ 
+	\end{tabular} 
+\end{table}
+
+
+
+\end{frame}
+
+\section{Discussion}
+
+
+\begin{frame}
+\frametitle{Methods}
+
+\begin{block}
+	{New Approach (in progress)}
+	\begin{itemize}
+		\item Market orders only
+		\item Semiparametric Tobit
+		\item Use BIC to select regressors
+		\item Differences in marginal effects between paid and unpaid
+	\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+
+
 
 
 
