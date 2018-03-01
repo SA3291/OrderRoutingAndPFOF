@@ -82,7 +82,7 @@ dir_605 = '../../605/'
 ### Main
 
 # Dictionary of symbols to find their exchanges
-symbol_dict = load_symbol_dict('../../ExchangeData/symbols_df.csv')
+symbol_dict = load_symbol_dict('../../keys/symbols.csv')
 
 
 # IO
