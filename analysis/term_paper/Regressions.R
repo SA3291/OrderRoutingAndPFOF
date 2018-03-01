@@ -6,7 +6,7 @@ library(sandwich)
 
 ## Params
 
-filename_output <- "../html_tables/tables_all_market.html"
+filename_output <- "../../analysis/html_tables/tables_all_market.html"
 folder <- '~/Github/OrderRoutingAndPFOF/data/processed/'
 table_name <- 'All Brokers'
 
