@@ -151,9 +151,8 @@ for year in range(year,2018):
 pbar.close()
 
 ## Print missing data
-
-print('\nNo data for ' + broker + ' in ', end = '')
-
-print(','.join(missing_list))    
+if missing_list:
+    print('\nNo data for ' + broker + ' in ', end = '')
+    print(','.join(missing_list))    
      
 print('\nComplete\n')
