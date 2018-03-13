@@ -18,6 +18,7 @@ Citadel Execution Service,CDRG
 TVIRT,VRTU
 VIRTU FINANCIAL CAPITAL MARKETS LLC,VRTU
 VIRTU Americas LLC,VRTU
+NITE,VRTU
 KEDGK,EDGX
 UBS Securities LLC,UBSS
 TUBSS,UBSS
@@ -36,15 +37,22 @@ Cantor Fitzgerald&Co,CFCO
 Auto Trading Desk Fin Svc,ATDF
 Citigroup Global Markets,CITI
 DirectEdge ECN (EDGA),EDGA
-BATS Stock Exchange,BATS
-BATS Y Exchange,BATS
 BNY MELLON CAPITAL MARKET,BNYC
-"Goldman, Sachs & Co",GS
+"Goldman, Sachs & Co",GSES
 J.P.Morgan Securities LLC,JPMS
 KCG Americas LLC,KCG
 NYSE Arca,ARCA
 Virtu Financial Capital,VRTU
-TGSCO,GS
+TGSCO,GSES
 Deutsche Bank ATS,DBAB
+Deutsche Bank Securities,DBAB
+"DirectEdge ECN (EDGX)",EDGX
+"DirectEdge Exchange(EDGX)",EDGX
+Goldman Sachs Ex,GSES
+"Goldman Sachs Exec&Clear",GSES
+Goldman Sachs Execution,GSES
+"Wolverine Execution Svc.,",WOLV
+"Aqua Securities L. P.",AQUA
+"BGC Financial, L.P.",BGC
 
 

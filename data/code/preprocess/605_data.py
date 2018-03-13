@@ -95,7 +95,7 @@ if input_command == "all":
 
 else:
 
-    dir_605_folders = input_command.split(',')
+    dir_605_folders = input_command.replace(' ', '').split(',')
 
 print([x for x in os.walk(dir_605)][0][1])
 print(dir_605_folders)
