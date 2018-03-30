@@ -56,22 +56,21 @@ def SLS_1(b, Y, X, X_ind):
     return (-0.5 * np.matrix(X_ind)*residual)
 
 
+# Regress Y on X with SLS
 def run_semiparametric_regression(Y, X, guess, trim_percent = 0.98, 
     xtol = 0.001, maxiter = 1):
     ''' Runs SLS with some default parameters, approximates an initial guess 
-    using a least squares optimization routine and then the final estimate 
     using BFGS
     '''
-
-    obj_f = lambda x_0: -SLS_1(np.append(np.array([1]), x_0), 
-        Y, X, trim(X, 0.98))[0,0]
+    
+    obj_f = lambda x_0: -1e6*SLS_1(np.append(np.array([1]), x_0), Y, X, 
+        trim(X, 0.98))[0,0]
 
     print('    Running LS...')
-    result = least_squares(obj_f, list(np.array(guess).flatten()), 
-        xtol = xtol)
+    result = least_squares(obj_f, list(np.array(guess).flatten()), xtol = xtol)
 
     print('    BFGS...')
-    result = minimize(obj_f, result.x, method='BFGS', 
+    result = minimize(obj_f, list(np.array(guess).flatten()), method='BFGS', 
         options = {'maxiter': maxiter})
 
     return result
@@ -162,7 +161,7 @@ p_value_labels = {0.05: '*', 0.01: '**', 0.001: '***'}
 
 ## Load data
 
-data_df = pd.read_csv(data_dmd_loc).dropna()
+data_df = pd.read_csv(data_dmd_loc)
 data_df['PrImp_Pct_Rebate_Dummy'] = data_df['PrImp_Pct'] * \
                                         data_df['Rebate_Dummy']
 data_df['PrImp_AvgAmt_Rebate_Dummy'] = data_df['PrImp_AvgAmt'] * \
@@ -218,13 +217,13 @@ for i in range(0, len(fit_formulae)):
     ## Get results
     print('Regressing with fit %d...' % i )
     
-    data = data_df[fit_formulae[i]]
+    data = data_df[fit_formulae[i]].dropna()
     X = np.matrix(data)[:, 1:]
     Y = np.matrix(data)[:, 0]
 
-    guess = X[1, 1:]
-    results = run_semiparametric_regression(Y, X, guess, 
-        xtol = reg_xtol, maxiter = reg_maxiter)
+    beta_guess, _, _ , _ = np.linalg.lstsq(X, Y, rcond = -1)
+    results = run_semiparametric_regression(Y, X, 
+        beta_guess[1:]/beta_guess[0], xtol = 0.00001, maxiter = 50)
     
     fit_results[i] = results
     
