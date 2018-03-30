@@ -38,7 +38,8 @@ def aggregate_605MktCtrMonth_data(data, symbol_dict):
     data['AvgEffecSpread_T'] = data['AvgEffecSpread'] * data['ExecShares']
 
     # Aggregate data by exchange
-    data = data.groupby(['MarketCenter', 'idate', 'Exchange', 'OrderCode']) \
+    data = data.query('SizeCode == 21') \
+        .groupby(['MarketCenter', 'idate', 'Exchange', 'OrderCode']) \
         .sum().reset_index()
 
     # Reconstruct original variables
