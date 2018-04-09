@@ -19,10 +19,10 @@
 \usepackage{siunitx}
 %\usepackage{showframe}
 \usepackage{titlesec}
-\usepackage{lipsum}
+%\usepackage{lipsum}
 
 % set space
-%\doublespacing
+\doublespacing
 
 % section headings
 \renewcommand{\thesection}{\Roman{section}.\hspace{-0.5em}}
@@ -88,7 +88,7 @@
 
 \begin{document}
 	
-\title{The Effect of Payment for Order Flow on Order Routing}
+\title{\textbf{The Effect of Payment for Order Flow} \\ \vspace{-0.5em} \textbf{on Order Routing}}
 
 \author[]{Saketh Aleti}
 
@@ -134,11 +134,11 @@ In particular, Battalio and Holden find that brokers can maximize profits by usi
 
 \subsection{The Effects of Order Rebates}
 
-Angel, Harris, and Spatt (2011) note that Regulation NMS has resulted in significantly greater competition among market centers. However, Dennert (1993) and Duta and Madhavan (1997) find that competition between market centers can actually have mixed effects for retail investors. Firstly, Dennert (1993) models price competition where prices are quoted by competiting dealers facing some unknown future demand. Then, introducing informed and uninformed traders to the model, Dennert finds that increasing the number of market makers increases their individual risk exposure. As a result, bid-ask spreads increase and liquidity traders face higher transaction costs. So, there exist cases where liquidity traders, who are generally uninformed, would be better off in monopolistic markets than competitive ones. Next, Duta and Madhavan (1997) present a model where multiple market makers compete with one another resulting in higher spreads; in some ways, this effect is similar to what would occur if the market makers colluded and fixed prices. They suggest that this outcome is due to current institutional arrangements, and investors would be better off if price priority was eliminated, internalization was discouraged, and order flow payments were eliminated. 
+Angel, Harris, and Spatt (2011) note that Regulation NMS has resulted in significantly greater competition among market centers. However, Dennert (1993) and Duta and Madhavan (1997) find that competition between market centers can actually have mixed effects for retail investors. Firstly, Dennert (1993) models price competition where prices are quoted by competing dealers facing some unknown future demand. Then, introducing informed and uninformed traders to the model, Dennert finds that increasing the number of market makers increases their individual risk exposure. As a result, bid-ask spreads increase and liquidity traders face higher transaction costs. So, there exist cases where liquidity traders, who are generally uninformed, would be better off in monopolistic markets than competitive ones. Next, Duta and Madhavan (1997) present a model where multiple market makers compete with one another resulting in higher spreads; in some ways, this effect is similar to what would occur if the market makers colluded and fixed prices. They suggest that this outcome is due to current institutional arrangements, and investors would be better off if price priority was eliminated, internalization was discouraged, and order flow payments were eliminated. 
 
 Other papers find similar results regarding the effect of order rebates. Cimon (2016) presents a theoretical model of limit order trading and finds that significant spreads in the fee/rebate for maker-taker venues cause brokers to reroute orders to venues with poor execution quality. This model consists of two periods where brokers decide where to route their clients marketable orders. The paper then provides a theoretical basis for two empirical results: exchanges with higher rebates will endogenously have worse fill rates and, when trading fees are sufficiently different, brokers will prioritize rebates over their clients' orders fill rates. Maglaras, Moallemi, and Zheng (2015) develop a different model where, instead of brokers acting as an intermediary, investors route their own orders and can pay fees or accept rebates for their order flow. The model finds that limit orders sent to high fee venues still face worse execution quality even when investors themselves are making the decision. Additionally, when fill rates between high and low fee venues are significantly close, routing to capture rebates is welfare improving for investors. In other cases, the rebates offered by high fee venues are not enough to offset their subpar execution quality. In short, both papers imply that maximizing rebate revenue is not equivalent to maximizing execution quality. 
 
-Lastly, there exists literature examining the effect of maker-taker and payment for order flow models on execution quality. To begin, we have Battalio, Shkilko, and Van Ness (2016), which examines differences between venues that pay for order flow and those that use the maker-taker model in US options markets. Using trade and quote data for options from OPRA, they find that the cost of liquidity is approximately 40 basis points lower in markets that pay for order flow than those that use maker-taker. Additionally, they find that high priced options face lower spreads in maker-taker exchanges; therefore, they argue that brokers cannot fulfill their best execution obligation if they route all their orders to venues that use the payment for order flow model, which would maximize broker revenue. Analyzing US equity markets instead, Battalio, Corwin, and Jennings (2016), find empirical evidence that brokers who route to maximize rebates cannot be maximizing execution quality. Using a proprietary data set of orders, they develop a model which they then further investigate with the larger TAQ dataset. Battalio, Corwin, and Jennings find that four major retail brokers ``appear to route all nonmarketable limit orders to the venue offering the largest rebate." Additionally, based on results from their proprietary data set, they find that limit order execution quality is negatively correlated with an exchange's rebate. Generalizing to the TAQ dataset, they also find that order rebates have greater impacts on low-priced stocks. In any case, these papers develop an empirical foundation for the argument that maximizing rebate revenue does not maximize execution quality. 
+Lastly, there exists literature examining the effect of maker-taker and payment for order flow models on execution quality. To begin, we have Battalio, Shkilko, and Van Ness (2016), which examines differences between venues that pay for order flow and those that use the maker-taker model in US options markets. Using trade and quote data for options from OPRA, they find that the cost of liquidity is approximately 40 basis points lower in markets that pay for order flow than those that use maker-taker. Additionally, they find that high priced options face lower spreads in maker-taker exchanges; therefore, they argue that brokers cannot fulfill their best execution obligation if they route all their orders to venues that use the payment for order flow model, which would maximize broker revenue. Analyzing US equity markets instead, Battalio, Corwin, and Jennings (2016), find empirical evidence that brokers who route to maximize rebates cannot be maximizing execution quality. Using a proprietary data set of orders, they develop a model which they then further investigate with the larger TAQ dataset. Battalio, Corwin, and Jennings find that four major retail brokers ``appear to route all non-marketable limit orders to the venue offering the largest rebate." Additionally, based on results from their proprietary data set, they find that limit order execution quality is negatively correlated with an exchange's rebate. Generalizing to the TAQ dataset, they also find that order rebates have greater impacts on low-priced stocks. In any case, these papers develop an empirical foundation for the argument that maximizing rebate revenue does not maximize execution quality. 
 
 Based on previous literature, I expect order routing that prioritizes rebate revenue to be subpar in execution quality. As stated above, this has both a theoretical foundation and an empirical foundation. This paper aims to estimate the effect of payment for order flow on broker order routing. In the methodology section, I explain how this question can be approached by studying the effects of execution quality on the order routing. While the literature explains the theoretical effects of revenue-maximizing order routing, this research will estimate the actual effects of the presence of payment for order flow on order routing and execution quality. Thus, the results further develop the empirical literature and may offer new questions for theory. 
 
@@ -151,12 +151,12 @@ Based on previous literature, I expect order routing that prioritizes rebate rev
 	
 \section{Data Description}
 
-	My methodology aims to quantify the effect of POF on order routing and its execution quality; in order to do so, I examine differences in order routing between brokers who do and do not accept POF. Thus, I use data on order routing - available through 606 disclosures - and execution quality - found in 605 disclosures.  After collecting the data, I merge both into a dataset where each observation belongs corresponds to a specific broker, market center, exchange, order type, and time period. Because the data sets are in different time frequencies, I consolidate each to quarterly before merging. 
+	My methodology aims to quantify the effect of POF on order routing and its execution quality; in order to do so, I examine differences in order routing between brokers who do and do not accept POF. So, I use data on order routing - available through 606 disclosures - and execution quality - found in 605 disclosures.  After collecting the data, I merge both into a dataset where each observation belongs corresponds to a specific broker, market center, exchange, and time period. Because the data sets are in different time frequencies, I consolidate each to quarterly before merging. 
 	
 	\subsection{605 Data}
 	
 	
-		Firstly, I obtain the 605 disclosures from each market center's website. The SEC requires market centers to disclose information every month regarding the quality of executions for each stock; these disclosures are referred to as 605 filings in accordance with Rule 605 of Reg NMS. The 605 data contains the volume of each stock for each order type that passes through the market center. Additionally, it breaks down this volume into orders that received price improvement, orders that were at-the-quote, and orders that were outside-the-quote. When an order receives price improvement, it means that the buyer or seller received a better price than what they were willing to pay or what the market offered (the NBBO); for instance, if the NBBO for \$AAPL is at $100/101$, market centers that execute trades between these prices provide price improvement. This data is further broken down into the number of price improved shares for each stock, the average amount of price improvement, and the average time a price improved order took to execute. Similarly, market centers report the average time and shares of ATQ and OTQ orders as well; ATQ refers to orders at the NBBO while OTQ refers to orders outside the NBBO. This data is necessary in constructing my independent variables: measures of execution quality. Also, since 605 data is reported on a monthly and per stock basis, I convert it to a quarterly and per exchange basis to match the 606 data. Lastly, I use execution quality statistics for orders with the size code 21, which refers to orders between 100-499 shares; this is the smallest order size category available and likely best represents executions for the orders of retail investors. Table 1 provides summary statistics from the 605 data for the execution quality variables I use in my regressions.
+
 		
 		\begin{table}[t]
 		
@@ -165,7 +165,7 @@ Based on previous literature, I expect order routing that prioritizes rebate rev
 		\centering
 		\footnotesize
 		
-		\begin{tabular}{@{}L{18.45em}rrrrrrr@{}}
+		\begin{tabular}{@{}L{17.85em}rrrrrrr@{}}
 			\\[-4.5ex]
 			\toprule
 			\textbf{Execution Quality Variables} &     Mean &     Min &      25\% &      50\% &      75\% &      Max \\
@@ -180,26 +180,35 @@ Based on previous literature, I expect order routing that prioritizes rebate rev
 			\hline \\[-1.8ex] 
 			\multicolumn{7}{@{}l}{\textit{NYSE Listed Stocks}} \\ \\[-2.5ex] 
 			\hline \\[-1.8ex] 
-			Average Price Improvement & 0.00849 & 0.00299 & 0.00682 & 0.00859 & 0.01177 & 0.01250 \\
-			Percent Price Improved    & 0.91941 & 0.86234 & 0.89304 & 0.92472 & 0.94822 & 0.96526 \\
-			Expected Price Improvement & 0.00786 & 0.00258 & 0.00622 & 0.00788 & 0.01091 & 0.01184 \\
-			Execution Time for Price-Improved   & 0.04296 & 0.00101 & 0.00387 & 0.00554 & 0.04378 & 0.17357 \\
-			Execution Time for All Shares     & 0.04977 & 0.00120 & 0.00633 & 0.00794 & 0.05246 & 0.18683 \\
+			Average Price Improvement & 0.00672 & 0.00198 & 0.00420 & 0.00648 & 0.00893 &  0.01571 \\
+			Percent Price Improved    & 0.86290 & 0.03728 & 0.85863 & 0.91970 & 0.94968 &  0.98118 \\
+			Expected Price Improvement & 0.00589 & 0.00038 & 0.00349 & 0.00560 & 0.00822 &  0.01337 \\
+			Execution Time for Price-Improved   & 0.17096 & 0.00000 & 0.00549 & 0.02482 & 0.19239 &  5.88234 \\
+			Execution Time for All Shares     & 0.25787 & 0.00119 & 0.01197 & 0.04829 & 0.21703 & 10.47223 \\
 			\hline \\[-1.8ex] 
 			\multicolumn{7}{@{}l}{\textit{Other Exchange Listed Stocks}} \\ \\[-2.5ex] 
 			\hline \\[-1.8ex] 
-			Average Price Improvement & 0.00784 & 0.00299 & 0.00569 & 0.00834 & 0.01035 & 0.01148 \\
-			Percent Price Improved    & 0.92094 & 0.86386 & 0.89491 & 0.92370 & 0.95277 & 0.97043 \\
-			Expected Price Improvement & 0.00728 & 0.00276 & 0.00492 & 0.00788 & 0.00997 & 0.01042 \\
-			Execution Time for Price-Improved   & 0.04772 & 0.00122 & 0.01126 & 0.02250 & 0.06361 & 0.15704 \\
-			Execution Time for All Shares     & 0.06403 & 0.00443 & 0.01785 & 0.02752 & 0.09529 & 0.20205 \\
+			Average Price Improvement & 0.00763 & 0.00211 & 0.00468 & 0.00707 & 0.01043 &  0.02097 \\
+			Percent Price Improved    & 0.85806 & 0.10056 & 0.86543 & 0.91431 & 0.94413 &  0.97043 \\
+			Expected Price Improvement & 0.00658 & 0.00047 & 0.00375 & 0.00586 & 0.00962 &  0.01643 \\
+			Execution Time for Price-Improved   & 0.26946 & 0.00000 & 0.01457 & 0.04944 & 0.21461 & 11.01870 \\
+			Execution Time for All Shares     & 0.42925 & 0.00000 & 0.02612 & 0.07975 & 0.29440 & 24.48855 \\
 			\hline \\[-1.8ex]  
+			\multicolumn{7}{@{}l}{\textit{All Stocks}} \\ \\[-2.5ex] 
+			\hline \\[-1.8ex] 
+			Average Price Improvement & 0.00874 & 0.00198 & 0.00506 & 0.00735 & 0.01102 &  0.02919 \\
+			Percent Price Improved    & 0.85594 & 0.03728 & 0.85517 & 0.91201 & 0.94231 &  0.98118 \\
+			Expected Price Improvement & 0.00757 & 0.00038 & 0.00415 & 0.00632 & 0.00993 &  0.02759 \\
+			Execution Time for Price-Improved   & 0.21421 & 0.00000 & 0.00871 & 0.03785 & 0.19885 & 11.01870 \\
+			Execution Time for All Shares     & 0.34278 & 0.00000 & 0.01935 & 0.06566 & 0.25043 & 24.48855 \\
+			\hline \\[-1.8ex] 
 			\multicolumn{8}{@{}p{\textwidth}@{}}{\textit{Note: } The table reflects statistics for market orders with a size code of 21 (executions between 100-499 shares). Price improvement is given in \$/share and execution time is given in seconds. }  \\ 
 		\end{tabular}
 		
 		
 	\end{table}
 		
+				Firstly, I obtain the 605 disclosures from each market center's website. The SEC requires market centers to disclose information every month regarding the quality of executions for each stock; these disclosures are referred to as 605 filings in accordance with Rule 605 of Reg NMS. The 605 data contains the volume of each stock for each order type that passes through the market center. Additionally, it breaks this volume down into orders that received price improvement,\footnote{  When an order receives price improvement, it means that the buyer/seller received a better price than what they were willing to pay or what the market offered (the NBBO); for instance, if the NBBO for \$AAPL is at $100/101$, market centers that execute trades between these prices provide price improvement.} orders that were at-the-quote, and orders that were outside-the-quote.\footnote{  ATQ refers to orders at the NBBO, while OTQ refers to orders outside the NBBO.} This data is further broken down into the number of price improved shares for each stock, the average amount of price improvement, and the average time a price improved order took to execute. Similarly, market centers report the average time and shares of at-the-quote and outside-the-quote orders as well. This data is necessary in constructing my independent variables which are measures of execution quality. Also, since 605 disclosures are reported on a monthly and per stock basis, I convert them to a quarterly and per exchange basis to match the 606 data. Lastly, I subset the data for orders with the size code 21, which refers to those between 100-499 shares; this is the smallest order size category available and likely best represents executions for the orders of retail investors. Table 1 provides summary statistics from the 605 data for the execution quality variables I use in my regressions.
 		
 	\subsection{606 Data}
 	
@@ -209,7 +218,7 @@ Based on previous literature, I expect order routing that prioritizes rebate rev
 
 		\begin{table}[t]
 			
-			\caption{\small{Cross section of 606 Data (TD Ameritrade, NASDAQ, 2017Q3)}}
+			\caption{\small{Example of 606 Disclosure (TD Ameritrade, NASDAQ, 2017Q3)}}
 			\centering
 			\footnotesize
 
@@ -227,16 +236,16 @@ Based on previous literature, I expect order routing that prioritizes rebate rev
 					Two Sigma Securities, LLC  & 1\%  & 2\%  & 1\%  & 3\%   \\ 
 					[0.2ex] \hline
 				\end{tabular}
-
+				\\[-1.8ex]
 		\end{table}
 		
-		Also, note that TD Ameritrade redirects a majority of its orders to its own clearing corporation, which itself produces a 606 disclosure documenting its order flow; this is a fairly common practice among the larger brokers. In order to account for order flow from a broker to its subsidiary clearing corp, I take the order flow payments made to the clearing corporation (found in their seperate 606 filing), weight them by the share of orders sent to the clearing corp, and add them back to the order flow payments to the broker. This ensures that order flow sent to subsidiaries is accounted for in the final dataset. For instance, if TD Ameritrade Clearing sends 50\% of its orders to Citadel, then the total percent of orders routed to Citadel is 51.5\% (77\% * 50\% + 13\%).  
+		Also, note that TD Ameritrade redirects a majority of its orders to its own clearing corporation, which itself produces a 606 disclosure documenting its order flow; this is a fairly common practice among the larger brokers. In order to account for order flow from a broker to its subsidiary clearing corp, I take the order flow payments made to the clearing corporation (found in their separate 606 filing), weight them by the share of orders sent to the clearing corp, and add them back to the order flow payments to the broker. This ensures that order flow sent to subsidiaries is accounted for in the final dataset. For instance, if TD Ameritrade Clearing sends 50\% of its orders to Citadel, then the total percent of orders routed to Citadel is 51.5\% (77\% * 50\% + 13\%).  
 		
 		Along with this information, the disclosure states the average payment received by TD Ameritrade from each routing venue; this is the payment for order flow. However, this variable is a deterministic function of the order routing already present in the data. That is, market centers pay different amounts for different types of orders. The average payment reported by brokers is the total payment received divided by the number of shares routed to a certain market center. So, if a market center offers higher rebates for market orders than limit orders and a broker routes more market orders their way in some future time period, then the average payments reported would increase even though the actual rebates offered may not have changed. This makes it impossible to draw any information from the average payments statistic without an endogeneity problem. Additionally, more specific data regarding payment for order flow is unavailable, so there is no way of extracting any information from average payments alone. Instead, I simply keep track of which brokers offer order rebates with a dummy variable; brokers, legally, must disclose if they are receiving payment for order flow, so this data is available. I use this later on for a subgroup analysis. 
 		
 		It is also important to note that order routing requires particular infrastructure to process which limits the universe of market centers that brokers can route; this requires adjusting the raw 606 data. Returning to the TD Ameritrade example, they route to Citadel, Virtu, Citi, and Two Sigma, although many other potential market centers exist. One approach to filling in the discluded entries would be to populate the 606 data with 0\% entries for all market centers available from the 605 data. However, this would ignore the issue of infrastructure. A broker may set up a connection to a new market center if they believed that they would receive marginally better execution quality by doing so. And, setting up a connection is a fixed cost and the connection likely persists for some time even after brokers cease to route to a market center. So, I adjust the 606 data to include missing zeros by only adding entries for market centers that a broker has routed to in the past two quarters. This ensures that regressions on this data avoid selection bias while taking infrastructure into consideration. 
 		
-		Lastly, some brokers did not accept payment for order flow but were still included under the subgroup \textit{POF brokers}. This was done when brokers routed to clearing corporations that received payment for order flow. For instance, Hollencrest Securities receives no POF, but contracts Charles Schwab to route its orders; the latter do accept POF. Hence, Hollencrest's order routing is still implicitly under the influence of rebates although it receives none. So, I use the term \textit{POF} or \textit{paid} in the sense that these types of brokers' order routing is affected by POF whether or not they actually receive any direct financial compensation.
+		Lastly, some brokers did not accept payment for order flow but were still included under the subgroup \textit{POF brokers}. This was done when brokers routed to clearing corporations that received payment for order flow. For instance, Hollencrest Securities receives no POF, but contracts Charles Schwab to route its orders; the latter do accept POF. Hence, Hollencrest's order routing is still implicitly under the influence of rebates although it receives none. So, I use the term \textit{POF} or \textit{paid} in the sense that these types of brokers' order routing is affected by POF whether or not they actually receive any direct financial compensation. On the other hand, those not under the influence of payment for order flow are referred to as \textit{Non-POF} or \textit{unpaid} brokers. 
 		
 		In total, the 606 data provides order routing data, or ``market share" within brokers, for each market center specified by exchange and order type on a monthly basis. 
 
@@ -251,24 +260,24 @@ Based on previous literature, I expect order routing that prioritizes rebate rev
 
 	Suppose that brokers route orders based on a the market center's execution quality and its payment for order flow; realistically, these are the only possible variables a profit-maximizing firm would take into account besides for some sort of personal relationship with a market center. That sort of effect would be fixed over time, so it can be modeled with a constant term. So, in total, we have fixed effects represented by $\alpha$, a vector of execution quality factors represented by $X$, and the level of payment for order flow denoted by $Z$; these variables determine $Y$ which denotes market share - the percent of orders routed by a broker to a particular market center. 
 	\begin{equation}
-	Y_{i, j, k, l, t} = \alpha_{i,j,k,l} +  X_{j, k, l, t} \cdot \beta +   Z_{j, l, t} \cdot \gamma + \epsilon
+	Y_{i, j, k, t} = \alpha_{i,j,k} +  X_{j, k, t} \cdot \beta +   Z_{j,  t} \cdot \gamma + \varepsilon
 	\end{equation}	
 	
-	The subscript $i$ denotes the broker, $j$ denotes the market center, $k$ denotes the exchange, and $l$ denotes the order type. Lastly, we have $\epsilon$ representing the error term.
+	The subscript $i$ denotes the broker, $j$ denotes the market center, and $k$ denotes the exchange. Lastly, we have $\epsilon$ representing the error term.
 	
 
-	In this model, the term $Z$, payment for order flow, is unknown because there is no data available to construct it. This could cause omitted variable bias if $\gamma \neq 0$ and $cov(X, Z) \neq 0$. However, although the former I hypothesize to be true, I believe that the latter is not. This is because $Z_{j, l, t}$ states the level of rebate offered for order flow at some point in time $t$. For it to have a causal relationship with $X_{j, k, l, t}$, we would need market centers either reacting to execution quality shifts by changing rebates and/or responding to rebate revenue with changes in execution quality. The latter is impossible, because market centers cannot simply choose how well trades are executed on their markets. Better trade-matching algorithms may lead to better executions, but market centers cannot `undo' investments into improving their execution quality nor are these straightforward investments with consistent, short-term returns in execution quality. So, if rebate revenue increased, a market center cannot cut costs by reducing execution quality; and, if it decreased, it is improbable that a market center could simply better its execution quality in the same period. Additionally, improvements in execution quality tend to be a result of technological process (eg: faster computers); its non-trivial for a market center to improve execution quality by any premeditated amount. On the other hand, it is also unlikely that market centers can respond to execution quality changes by changing their rebates. This is because market centers cannot change their rebates very often; there's a significant amount of paperwork involved and it can take several quarters for changes in the rebate structure to actually go through. So, market centers cannot react well to changes in execution quality by changing the prices they offer for rebate flow. Moreover, it is very difficult to predict when execution quality will fall, and, even if predicted, it may be a result of systemic problems in the market rather than being particular issue with the market center itself. In short, $cov(Z, X)$ is likely $0$. Moreover, $\gamma$ will trivially equal $0$ for unpaid brokers, so regressions on their subgroup will remain consistent even without this assumption. 
+	In this model, the term $Z$, payment for order flow, is unknown because there is no data available to construct it. This could cause omitted variable bias if $\gamma \neq 0$ and $cov(X, Z) \neq 0$. However, although the former I hypothesize to be true, I believe that the latter is not. This is because $Z_{j,  t}$ states the level of rebate offered for order flow at some point in time $t$. For it to have a causal relationship with $X_{j, k,  t}$, we would need market centers either reacting to execution quality shifts by changing rebates and/or responding to rebate revenue with changes in execution quality. The latter is impossible, because market centers cannot simply choose how well trades are executed on their markets. Better trade-matching algorithms may lead to better executions, but market centers cannot `undo' investments into improving their execution quality nor are these straightforward investments with consistent, short-term returns in execution quality. So, if rebate revenue increased, a market center cannot cut costs by reducing execution quality; and, if it decreased, it is improbable that a market center could simply better its execution quality in the same period. Additionally, improvements in execution quality tend to be a result of technological process (such as faster computers); its non-trivial for a market center to improve execution quality by any premeditated amount. On the other hand, it is also unlikely that market centers can respond to execution quality changes by changing their rebates. This is because market centers cannot change their rebates very often; there's a significant amount of paperwork involved and it can take several quarters for changes in the rebate structure to actually go through. So, market centers cannot react well to changes in execution quality by changing the prices they offer for rebate flow. Moreover, it is very difficult to predict when execution quality will fall, and, even if predicted, it may be a result of systemic problems in the market rather than being particular issue with the market center itself. In short, $cov(Z, X)$ is likely $0$. Moreover, $\gamma$ will trivially equal $0$ for unpaid brokers, so regressions on their subgroup will remain consistent even without this assumption. 
 	
-	Second, with respect to the factors of execution quality, $X$, I construct this variable using data on price improvement and execution time through the 605 disclosures. Considering price improvement, I have data on the number of price-improved shares, the average amount of price improvement, and the average time that price-improved shares took to execute. I use the latter two in my regressions, and I use the former to construct the percent of shares that were price-improved. Additionally, I include an interaction term between percent of price-improved shares and average price improvement; their product is the expected amount of price improvement. Additionally, since the data shows the average time that all types of executions took, I construct a variable for the average time that a share takes to execute at a market center. These variables are denoted in my regression results as \textit{PrImp\_Pct}, \textit{PrImp\_AvgAmt}, \textit{PrImp\_ExpAmt}, \textit{PrImp\_AvgT}, and \textit{All\_AvgT}. I do not include both PrImp\_AvgT and All\_AvgT in the same regression, since they are highly collinear. Additionally, I consider average effective spreads, the average difference between the NBBO spread (ask - bid) and the trade price, in my regression; tighter spreads generally indicate better executions. In total, I run several regressions using some combination of terms for the level of price improvement, a term for average time taken, and a term for spreads; I use the variables with the best explanatory power to construct the $X$ variable. 
+	Second, with respect to the factors of execution quality, $X$, I construct this variable using data on price improvement and execution time through the 605 disclosures. Considering price improvement, I have data on the number of price-improved shares, the average amount of price improvement, and the average time that price-improved shares took to execute. I use the latter two in my regressions, and I use the former to construct the percent of shares that were price-improved. Additionally, I include an interaction term between percent of price-improved shares and average price improvement; their product is the expected amount of price improvement. Additionally, since the data shows the average time that all types of executions took, I construct a variable for the average time that a share takes to execute at a market center. Also, I consider average effective spreads, the average difference between the NBBO spread (ask - bid) and the trade price, in my regression; tighter spreads generally indicate better executions. In total, I run several regressions using some combination of terms for the level of price improvement, a term for average time taken, and a term for spreads; I use the variables with the best explanatory power to construct the $X$ variable. 
 	
 	\begin{equation}
-	Y_{i, j, k, l, t} \,=\, \alpha_{i,j} \,+\,  X_{j, k, l, t} \cdot \beta \,+\,  (D_i \cdot X_{j, k, l, t}) \cdot \gamma\, +  u
+	Y_{i, j, k,  t} \,=\, \alpha_{i,j} \,+\,  X_{j, k, t} \cdot \beta \,+\,  (D_i \cdot X_{j, k, t}) \cdot \gamma\, +  u
 	\end{equation}	
 	\begin{equation}
-	Y_{i, j, k, l, t} = \alpha_{i,j,k,l} +  X_{j, k, l, t} \cdot \beta +  v
+	Y_{i, j, k, t} = \alpha_{i,j} +  X_{j, k, t} \cdot \beta +  v
 	\end{equation}	
 
-	Lastly, since $Y$  is defined as market share, this model is censored at 0 and 1. In the data, there are no cases where a broker routes 100\% of its orders to any market center, so only censoring at 0\% practically applies. In this case, a Tobit model would be appropriate. However, some argue that the assumption of normality is more problematic than the inconsistency caused by running OLS on censored data. So, I run OLS, Tobit, and a semiparametric model on the data, and compare the results. With respect to the OLS regression, the unobservable fixed effects may be correlated with $X$ and the large quantity of constant terms may create inconsistency. So, I consider both random effects and fixed effects and choose the appropriate model using a Hausman test. In these models, I use function forms resembling equation (2) where I regress on $X$ and $D_i \cdot X$ where $D_i$ is an indicator variable for whether a firm accepts payment for order flow. The significance of $\gamma \neq 0$ then determines whether the coefficients for paid brokers are significantly different than unpaid brokers. And, lastly, with respect to the semiparametric least squares model (Ichimura, 1993), I regress using equation (3) and a Gaussian kernel to find $\theta = \beta / \beta_1$. Since this regression returns only the ratios between coefficients, I treat coefficient $\beta_1$, either percent price-improved or expected price improvement, as a given variable in their respective models. Then, I find the standard errors of the other variables. I perform the SLS regression on paid and unpaid brokers seperately and then compare the significance of the coefficients in each and the differences between the two in marginal effects.
+	Lastly, since $Y$ is defined as market share, this model is censored at 0 and 1. In the data, there are no cases where a broker routes 100\% of its orders to any market center, so only censoring at 0\% practically applies. In this case, a Tobit model would be appropriate. However, some argue that the assumption of normality is more problematic than the inconsistency caused by running OLS on censored data. So, I run OLS, Tobit, and a semiparametric model on the data, and compare the results. With respect to the OLS regression, the unobservable fixed effects may be correlated with $X$ and the large quantity of constant terms may create inconsistency. So, I consider both random effects and fixed effects and choose the appropriate model using a Hausman test. In the parametric models, I use functional forms resembling equation (2) where I regress on $X$ and $X \cdot D_i$ where $D_i$ is an indicator variable for whether a firm accepts payment for order flow. The significance of the coefficients corresponding to $X \cdot D_i$ then determines whether the coefficients for paid brokers are significantly different than unpaid brokers. If these coefficients, assuming they are significant, are negative for price improvement terms and positive for execution speed term, then the results would favor my hypothesis that Non-POF brokers route better than POF brokers; this in turn would imply that POF has a deleterious impact on order routing.And, lastly, with respect to the semiparametric least squares model (Ichimura, 1993), I regress using equation (3) using a Gaussian kernel to find $\theta = \beta / \beta_1$. Since this regression returns only the ratios between coefficients, I treat coefficient $\beta_1$, either percent price-improved or expected price improvement, as a given variable in their respective models. Then, I find the standard errors of the other variables. I perform the SLS regression on POF and Non-POF brokers separately and then compare the significance of the coefficients in each and the differences between the two in marginal effects. Significant differences in these would imply that the two types of brokers behave differently; the signs of these differences then indicate whether POF brokers perform better or worse than Non-POF brokers. 
 	
 	
 
@@ -276,13 +285,13 @@ Based on previous literature, I expect order routing that prioritizes rebate rev
 	
 \section{Results}
 
-	 I present estimated effects of POF on execution quality in Table 3, the Tobit regression results; this effect is measured through the interaction terms with $D_i$, the POF indicator variable I find significant differences between POF and Non-POF Brokers in terms of responsiveness to all measures of execution quality except average price improvement.\footnote{I also regressed subsets of the data by exchange. Payment for order flow seems to have slightly worse effects on the order routing of NASDAQ-listed stocks compared to those listed on the NYSE or other exchanges. This result does not appear to be significant for all fits or have any theoretical foundation.}  I get similar results from running OLS directly on the data; these regressions are reported in Table A1 in the appendix. Furthermore, in Table 4, I provide the results of SLS along with plots of marginal effects. The semiparametric approach returns similar results but with much smaller magnitudes; Non-POF brokers perform better with respect to price improvement but both types of brokers perform about equally with respect to execution speeds. The marginal effect plots show Non-POF brokers responding more strongly to changes in execution quality at worse market centers; the results are mixed for average and better market centers . 
+	 I present estimated effects of POF on execution quality in Table 3: the Tobit regression results. This effect is measured through the interaction terms with $D_i$, the POF indicator variable; I find significant differences between POF and Non-POF Brokers in terms of responsiveness to all measures of execution quality except average price improvement.\footnote{I also regressed subsets of the data by exchange. Payment for order flow seems to have slightly worse effects on the order routing of NASDAQ-listed stocks compared to those listed on the NYSE or other exchanges. This result does not appear to be significant for all fits or have any theoretical foundation.}  I get similar results from running OLS directly on the data; these regressions are reported in Table A1 in the appendix. Furthermore, in Table 4, I provide the results of SLS along with plots of marginal effects. The semiparametric approach returns similar results but with much smaller magnitudes; Non-POF brokers perform better with respect to price improvement but both types of brokers perform about equally with respect to execution speeds. The marginal effect plots show Non-POF brokers responding more strongly to changes in execution quality at worse market centers; the results are weaker for average and better market centers . 
+
+
 
 \subsection{Effects on Execution Quality - Parametric Regressions}
 
-
-
-\begin{table}[ht] 
+\begin{table}[t] 
 	\caption{Tobit Regression Results} 
 	\label{} 
 	\footnotesize
@@ -330,22 +339,22 @@ Based on previous literature, I expect order routing that prioritizes rebate rev
 		Log Likelihood & $-$955.832 & $-$984.152 & $-$959.019 & $-$986.638 \\  
 		Wald Test & 96.801$^{***}$ & 38.828$^{***}$ & 91.954$^{***}$ & 35.462$^{***}$ \\  
 		\hline \\[-1.8ex]  
-		\multicolumn{5}{@{}p{45em}@{}}{\textit{Note: } $D_i$ denotes an indicator variable for a broker accepting POF. Robust standard errors are reported in parenthesis. *p$\textless$0.05, **p$\textless$0.01, ***p$\textless$0.001}  \\ 
+		\multicolumn{5}{@{}p{45em}@{}}{\textit{Note: } $D_i$ denotes an indicator variable for a broker accepting POF. Robust standard errors are reported in parentheses. *p$\textless$0.05, **p$\textless$0.01, ***p$\textless$0.001}  \\ 
 	\end{tabular} 
 \end{table} 
 
 
 
 
-Execution quality regressors multiplied by the POF indicator variable, $D_i$, produce coefficients that quantify the difference in responsiveness between POF and Non-POF brokers to their respective execution quality measure. For instance, in Table 3, the interaction term for expected price improvement in fit 4 is $-13.55$ ($|t| = 2.95$). This implies that brokers who receive payment for order flow respond significantly worse, compared to unpaid brokers, to changes in market centers' expected price improvement; thus, the presence payment for order flow likely reduces the price improvement retail investors receive compared to a counterfactual without its existence. This particular result is supported by fit 2 (Table 3) as well. And, the same findings reappear in the OLS regressions (Table A1) where the coefficient are slightly slower in magnitude but about equally significant. In the particular case mentioned earlier, a coefficient of $-13.55$ can imply a significant loss of welfare. For instance, suppose that a market center improved its expected price improvement by $\$0.01$, a moderate change. A broker accepting POF would shift their order routing to particular market center by $13.55\%$ less than a non-POF broker. If both brokers routed $\$100$ million in volume per week,\footnote{For reference, TD Ameritrade routes more than 500,000 trades per day (Horowitz, 2014). Assuming each trade's volume was $\$50$, likely a significant underestimate, this adds up to a weekly volume of $\$175$ million.}  retail investors using the POF-broker would miss out on approximately $\$7$ million in price improvement per year.
-
-
-In short, it seems that measures of the amount of price improvement and execution speed were relevant to all brokers, which the theoretical literature\footnote{ Some of the literature also provides a theoretical basis for including effective spreads in the analysis. So, the regressions in Table 3 and Table 4 were also performed with average effective spreads included, but these were dropped due to strong collinearity with the price improvement regressors.}  justifies. However, the coefficients on the percent of orders that received price improvement were all negative and insignificant; this may be due to the lack of variation in this variable among market centers. That is, the average market center offers price improvement on $91.4\%$ of its orders, while the standard deviation of this variable between market centers is $3.5\%$. At the same time, the interaction term for price improvement remains significant. In Table 3, there was a significant difference $(p < 0.05)$ between POF and Non-POF brokers for this variable; there was an even stronger difference $(p < 0.01)$  between the two in Table 4. So, although brokers in general may pay little attention to this measure of execution quality, unpaid brokers still prioritize it more than those who receive POF. 
+Execution quality regressors multiplied by the POF indicator variable, $D_i$, produce coefficients that quantify the difference in responsiveness between POF and Non-POF brokers to their respective execution quality measure. For instance, in Table 3, the interaction term for expected price improvement in fit 4 is $-13.55$ ($|t| = 2.95$). This implies that brokers who receive payment for order flow respond significantly worse, compared to unpaid brokers, to changes in market centers' expected price improvement; thus, the presence payment for order flow likely reduces the price improvement retail investors receive compared to a counterfactual without its existence. This particular result is supported by fit 2 (Table 3) as well. And, the same findings reappear in the OLS regressions (Table A1) where the coefficient are slightly slower in magnitude but about equally significant. In the particular case mentioned earlier, a coefficient of $-13.55$ can imply a significant loss of welfare. For instance, suppose that a market center improved its expected price improvement by $\$0.01$, a moderate change. A broker accepting POF would shift their order routing to particular market center by $13.55\%$ less than a non-POF broker. If both brokers routed $100$ million shares in volume per week,\footnote{ For reference, TD Ameritrade routes more than 500,000 trades per day (Horowitz, 2014). Assuming each trade's volume was $50$ shares, this adds up to a weekly volume of $\$175$ million. This weekly volume is about as much as the daily volume for a large-cap stock.}  retail investors using the POF-broker would miss out on approximately $\$7$ million in expected price improvement per year.
 
 
 
 
-\subsection{Effects on Execution Quality - Semiparametric Approach}
+On the other hand, the coefficients on the percent of orders that received price improvement were all negative and insignificant; this may be due to the lack of variation in this variable among market centers. That is, the average market center offers price improvement on $91.4\%$ of its orders, while the standard deviation of this variable between market centers is $3.5\%$. At the same time, the interaction term for average price improvement remains significant; in Table 3, there was a strong difference $(p < 0.01)$  between POF and Non-POF brokers. So, although brokers in general may pay little attention to this measure of execution quality, unpaid brokers still prioritize it more than those who receive POF. Additionally, by repeating the same exercise as with expected price improvement, we can see the $-0.497$ coefficient (Table 3: fit 1) implies major welfare losses as well. In this case, suppose we have the median market center, which offers an average price improvement of $\$0.00874$ per share. A moderate increase in the percent of shares price-improved, say by $3\%$, would translate to retail investors missing out on $\$1.3$ million per year in potential price improvement due to the presence of POF. Furthermore, this only considers losses for retail investors using that broker; generalizing to the set of all POF brokers would result in much larger potential losses. Lastly, it should be noted that there are also welfare losses implied by the significant, positive coefficients on the interaction terms for execution speed. These are probably much smaller losses and are more difficult to quantify in terms of a dollar value, since most retail investors are probably largely indifferent to whether their orders get executed within 100ms or 1s.  
+
+In short, it seems that measures of the amount of price improvement and execution speed were relevant to all brokers, which the theoretical literature justifies.\footnote{ Some of the literature, Duta and Madhavan (1997) and Dennert (1993),  also provides a theoretical basis for including effective spreads in the analysis. So, the regressions in Table 3 and Table 4 were also performed with average effective spreads included, but these were dropped due to strong collinearity with the price improvement regressors.} Additionally, all the signs on the interaction terms were as hypothesized; only the sign on percent price-improved was unexpectedly negative. Otherwise, signs on measures of price improvement were positive, while signs were negative for execution times; and, as hypothesized, these signs were the reversed on the interaction terms, suggesting that brokers accepting POF perform worse.
+
 
 \begin{table}[t] 
 	\captionsetup{font=normal}
@@ -399,21 +408,27 @@ In short, it seems that measures of the amount of price improvement and executio
 	\end{tabular} 
 \end{table} 
 
-\begin{table}[ht!]
+\subsection{Effects on Execution Quality - Semiparametric Approach}
+
+
+
+For the semiparametric approach, I regressed each subgroup independently; the results are shown in Table 5. For POF brokers, the coefficients for average execution time were highly significant but only for fits 2 and 4. Yet, in fits 1 and 3, the same  coefficients were not significant and actually positive. In the same fits, average price improvement was strongly significant; this suggests that it may be the presence of percent of shares price improved which captures much of the same variance as execution speeds. In short, brokers who accept payment for order flow are likely responsive to changes in the amount of price improvement offered, but the results are inconclusive with respect to execution speed. On the other hand, brokers who do not accept POF were highly responsive to changes in execution speeds but not necessarily to those in price improvement (Table 5: Panel B). All coefficients on regressors for execution speed were significant and negative, but those for average price improvement were not. These results suggest that POF brokers may prioritize price improvement while Non-POF brokers be more responsive to execution speed. However, since the SLS coefficients are ratios, they are not representative of the extent to which each subgroup prioritizes a particular execution quality measure.
+
+\begin{table}[!t]
 	%\caption*{} 
-	\centering
 	\footnotesize
 	\begin{tabular}{@{\extracolsep{0em}}rr}
+		\multicolumn{2}{@{}c@{}}{\includegraphics[scale=0.4]{/marginaleffects/primp_pct.png} }\\
 		\includegraphics[scale=0.4]{/marginaleffects/primp_avgamt.png} & \includegraphics[scale=0.4]{/marginaleffects/primp_expamt.png} \\
 		\includegraphics[scale=0.4]{/marginaleffects/primp_avgt.png} & \includegraphics[scale=0.4]{/marginaleffects/all_avgt.png} \\
-		\multicolumn{2}{@{}c@{}}{\includegraphics[scale=0.4]{/marginaleffects/primp_pct.png} }\\
-		\multicolumn{2}{@{}p{6.24in}@{}}{\textit{Note: } Marginal effects were obtained using a Gaussian kernel; the bandwidth used was the same as that which minimized the objective for the SLS regressions. The solid lines represent the difference marginal effects at each percentile, while the dashed lines represent the average difference in marginal effect. For the former, execution quality percentiles were taken from the universe of all market centers in the data. Average marginal effects were computed by averaging the marginal effects over the execution quality data corresponding to a particular subgroup. The difference in marginal effects was taken between Non-POF and POF brokers; a positive effect then suggests a relatively higher value for Non-POF brokers.}     \\  
+
+		\multicolumn{2}{@{}p{6.24in}@{}}{\textit{Note: } Marginal effects were obtained using a Gaussian kernel; the bandwidth used was the same as that which minimized the objective for the SLS regressions. The solid lines represent the difference marginal effects at each percentile, while the dashed lines represent the average difference in marginal effect. For the former, execution quality percentiles were taken from the market centers receiving order flow in the data. Average marginal effects were computed by averaging the marginal effects over the execution quality data corresponding to a particular subgroup. The difference in marginal effects was taken between Non-POF and POF brokers; a positive effect then suggests a relatively higher value for Non-POF brokers.}     \\  
 	\end{tabular}
 \end{table}
 
-For the semiparametric approach, I regressed each subgroup independently; the results are shown in Table 5. The coefficients for average execution time were highly significant but only for fits 2 and 4. Yet, in fits 1 and 3, the same  coefficients were not significant and actually positive. In the same fits, average price improvement, which is highly collinear with expected price improvement, was strongly significant; this suggests that it may be the presence of percent of shares price improved which captures much of the same variance as execution speeds. In short, brokers who accept payment for order flow are likely responsive to changes in the amount of price improvement offered, but the results are inconclusive with respect to execution speed. On the other hand, brokers who do not accept POF were highly responsive to changes in execution speeds but not necessarily to those in price improvement (Table 5: Panel B). All coefficients on regressors for execution speed were significant and negative, but those for average price improvement were not. These results suggest that POF brokers may prioritize price improvement while Non-POF brokers prioritize execution speed. However, since the SLS coefficients are ratios, they are not representative of the extent to which each subgroup prioritizes a particular execution quality measure.
+Instead, the difference in order routing between the two can be seen through the marginal effect plots. Each figure graphs the difference in marginal effects over a range of execution quality percentiles. In the plot for average price improvement, we can see that, for both fits, Non-POF brokers outperform paid brokers at low percentiles, but this difference tapers off; the average market effect, as denoted by the dashed line, shows that Non-POF brokers are only slightly more responsive than POF brokers to average price improvement. In short, Non-POF brokers react more strongly when relatively inferior market centers start performing better but not by much. With respect to the percent of shares price-improved, we see a similar trend.  Non-POF brokers are relatively more responsive around the lower percentiles, and this difference in responsiveness decays as execution quality increases. Note that the average marginal effect is about the same as that for average price improvement; this suggests the welfare losses from POF-affected order routing towards either execution quality measure are about the same. The strongest case for a difference between POF and Non-POF brokers are found in the plot for expected price improvement. The results from fit 1 are about the same magnitude as the other price improvement measures, but the fit 3 results show a strong difference between the two broker subgroups. Lastly, the plots for execution speed show weak, positive effects in favor of POF brokers. Although this implies that POF brokers may perform better, the size of these effects is very small. That is, a 100 ms improvement in execution speeds would only be met with an average difference in market share between brokers of $0.23\%$. This is a minute effect in order routing, compared to the fact that a 100 ms change in execution speed would be a major improvement. In short, this suggests that both types of brokers are about equally responsive to changes in execution speeds.
 
-Instead, the difference in order routing between the two can be seen through the marginal effect plots. Each figure graphs the difference in marginal effects over a range of execution quality percentiles. 
+Overall, the semiparametric results suggest a much smaller difference than what the Tobit and OLS models implied between POF and Non-POF brokers. The largest difference, the average marginal effect in fit 3 for expected price improvement ($\approx$ 4.14), implies a moderate welfare loss; the same approach from the parametric section would imply a loss, from missed price improvement, for retail investors using POF brokers of $\$2$ million per year. Similarly, for differences in order routing towards the percent of shares price-improved, the welfare losses calculated by the same approach would amount to $\$260,000$ per year. So, the semiparametric approach still finds welfare losses from payment for order flow albeit much smaller amounts. 
 
 
 
@@ -422,6 +437,47 @@ Instead, the difference in order routing between the two can be seen through the
 
 
 \section{Conclusion}
+
+
+
+Brokers must choose to route orders either to maximize execution quality or maximize
+some other objective; legally, by the SEC’s Regulation NMS, there should be no factor
+besides execution quality in their order routing decisions. However, although this is in
+violation of the law, brokers may route to to maximize rebates and then claim that
+they maximized execution quality after the fact. Moreover, it is incredibly difficult to
+prove that order flow was not routed to maximize execution quality after it is sent. The
+particular state of the market at the time an order is sent affects the location where it
+would receive the best execution. When brokers receive rebates, one might suspect that
+their order routing suffers even though, as brokers like to argue, it is theoretically possible for a broker to accept
+rebates while still prioritizing execution quality.
+
+However, based on the results, there does seem to be a significant difference between
+the order routing objectives of POF brokers and Non-POF brokers. 
+The results focused on price improvement and execution speed, since these two components are likely the most important factors of execution quality, and, paid brokers, such as TD Ameritrade, even advertise these factors to clients. 
+Since the coefficients of these factors differed between the two types of brokers, payment for order flow is likely causing an agency problem with rebate-accepting brokers. Rather than providing the best service for their clients, they seem to be maximizing their profit which was hypothesized. 
+The particular results varied in magnitude and significance between the parametric and semiparametric approach. The parametric approach found large, significant differences between the two types of brokers in terms of routing towards measures of price improvement and execution speed. The semiparametric approach found smaller, significant differences with respect to price improvement but only minor differences for execution speeds. Overall, it seems that the welfare implications for this behavior are fairly large for price improvement but remain inconclusive for execution speeds. 
+
+In response, brokers may make the argument that payment for order flow helps reduce
+commissions. This a valid point, since commissions tend to be significantly larger than
+the amount of price improvement that an investor may receive on their order. However, at
+the same time, it is likely that the reduction is significantly less than the loss of execution
+quality. Most retail investors are unaware of how stocks are actually executed and what
+types of price improvement they should expect. As a result, we can expect the elasticity
+of retail demand for a market center to be fairly low with respect to execution quality.
+On the other hand, commissions are straightforward and well known. So, the elasticity
+of consumer demand with respect to commissions is likely much higher. Thus, brokers
+are unlikely to pass on $100\%$ of their revenue from rebates back to retail investors; the profit-maximizing approach would likely be to redirect some of the rebates to lower per-trade commissions in order to increase net profit from rebates from cheaper trades. In short,
+the results from these regressions can still be used to argue that retail investors receive a
+net loss in welfare from routing to POF brokers.
+
+All in all, this study provides evidence in favor of the hypothesis that payment for order flow reduces retail investor welfare by causing brokers to miss potential price improvement. The inconclusive results with respect to execution speeds leave room for further study. One way to address this question would be to use data from the upcoming SEC Transaction Fee Pilot;
+\footnote{ The pilot program would implement temporary pricing restrictions on fee-and-rebate pricing models across three test groups of NMS stocks. These test groups include one set of stocks that would not permit rebates, one with caps on rebates of $\$0.0015$ and on fees of $\$0.0005$, and the last without restrictions. Exchanges are then obligated to prepare and publicly post data concerning their markets' executions. 
+}
+results from this program would address how the amount of payment for order flow affects market quality without the limitation of results possibly being influenced by the heterogeneity of broker-specific order routing practices. Lastly, further research could also overcome the latter issue by replicating the model presented in this paper with a larger universe of brokers. 
+
+
+
+
 
 
 
@@ -467,7 +523,7 @@ Instead, the difference in order routing between the two can be seen through the
 		Adjusted R$^{2}$ & 0.025 & 0.006 & 0.024 & 0.005 \\ 
 		F Statistic & 6.314$^{***}$ & 4.609$^{**}$ & 5.787$^{***}$ & 4.082$^{**}$ \\ 
 		\hline \\[-1.8ex]  
-		\multicolumn{5}{@{}p{45em}@{}}{\textit{Note: } $D_i$ denotes an indicator variable for a broker accepting POF. A Haussman test was performed for each functional form between Random Effects and Fixed Effects, and the appropriate model was chosen with a cutoff of $p = 0.05$. All regressions control for market center and broker fixed effects. Robust standard errors are reported in parenthesis.  *p$\textless$0.05, **p$\textless$0.01, ***p$\textless$0.001}  \\ 
+		\multicolumn{5}{@{}p{45em}@{}}{\textit{Note: } $D_i$ denotes an indicator variable for a broker accepting POF. A Haussman test was performed for each functional form between Random Effects and Fixed Effects, and the appropriate model was chosen with a cutoff of $p = 0.05$. All regressions control for market center and broker fixed effects. Robust standard errors are reported in parentheses.  *p$\textless$0.05, **p$\textless$0.01, ***p$\textless$0.001}  \\ 
 	\end{tabular} 
 \end{table} 
 
@@ -690,6 +746,10 @@ Instead, the difference in order routing between the two can be seen through the
 	
 	\bibitem{parlour}
 	Parlour, C.A., \& Rajan, U. (2003). Payment for order flow. Journal Of Financial Economics, 68379-411. doi:10.1016/S0304-405X(03)00071-0
+	
+	\bibitem{pilot}
+	Securities and Exchange Commision, (2018). SEC Proposes Transaction Fee Pilot for NMS Stocks. \href{https://www.sec.gov/news/press-release/2018-43}{\textit{https://www.sec.gov/news/press-release/2018-43}}
+	
 	
 	\bibitem{NMS}
 	Securities and Exchange Commision, (2005). SEC adopts regulation NMS and provisions regarding Investment Advisers Act of 1940. \href{https://www.sec.gov/news/press/2005-48.htm}{\textit{https://www.sec.gov/news/press/2005-48.htm}}
