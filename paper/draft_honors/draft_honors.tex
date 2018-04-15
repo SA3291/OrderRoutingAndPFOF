@@ -101,7 +101,7 @@
 
 One of the most significant changes in US equity markets in the last decade is the emergence of widespread competition for retail order flow\footnote{ Retail order flow refers to orders for securities that originate from retail investors as opposed to institutional investors such as banks and hedge funds}. About 20 years ago, stocks listed on an exchange such as NASDAQ were only traded on that exchange. Today, when a broker receives an order, they can redirect the order to one of hundreds of locations or internalize\footnote{ Internalization is the process by which a broker executes an order against their own inventory, so they can profit from the difference between the order's price and the market price} it. If they choose to redirect the order, it may go to an exchange, a market maker, or an electronic communications network. 
 The SEC refers to these venues as \textit{market centers}; they define a market center as ``any exchange market maker, OTC market maker, alternative trading system, national securities exchange, or national securities association" as per the Securities Exchange Act of 1934.
-Most venues offer brokers some rebate, usually less than a penny per share, in order to attract order flow.  The process by which market centers offer rebates for orders from broker-dealers is called \textit{payment for order flow} (POF). This practice remains controversial, since it allows brokers to effectively sell their client's orders to the highest bidder rather than sending them to the market center with the best execution. At the same time, some have argued that payment for order flow has come with benefits such as greater exchange competition (Angel, Harris, and Spatt, 2011). 
+Most venues offer brokers some rebate, usually less than a penny per 100 shares, in order to attract order flow.  The process by which market centers offer rebates for orders from broker-dealers is called \textit{payment for order flow} (POF). This practice remains controversial, since it allows brokers to effectively sell their client's orders to the highest bidder rather than sending them to the market center with the best execution. At the same time, some have argued that payment for order flow has come with benefits such as greater exchange competition (Angel, Harris, and Spatt, 2011). 
 
 
 According to an industry notice from the National Association of Securities Dealers, now the self-regulatory agency FINRA,
@@ -274,7 +274,7 @@ Based on previous literature, I expect order routing that prioritizes rebate rev
 	Y_{i, j, k,  t} \,=\, \alpha_{i,j} \,+\,  X_{j, k, t} \cdot \beta \,+\,  (D_i \cdot X_{j, k, t}) \cdot \gamma\, +  u
 	\end{equation}	
 	\begin{equation}
-	Y_{i, j, k, t} = \alpha_{i,j} +  X_{j, k, t} \cdot \beta +  v
+	Y_{i, j, k, t} = f(X_{j, k, t} \cdot \beta) +  v
 	\end{equation}	
 
 	Lastly, since $Y$ is defined as market share, this model is censored at 0 and 1. In the data, there are no cases where a broker routes 100\% of its orders to any market center, so only censoring at 0\% practically applies. In this case, a Tobit model would be appropriate. However, some argue that the assumption of normality is more problematic than the inconsistency caused by running OLS on censored data. So, I run OLS, Tobit, and a semiparametric model on the data, and compare the results. With respect to the OLS regression, the unobservable fixed effects may be correlated with $X$ and the large quantity of constant terms may create inconsistency. So, I consider both random effects and fixed effects and choose the appropriate model using a Hausman test. In the parametric models, I use functional forms resembling equation (2) where I regress on $X$ and $X \cdot D_i$ where $D_i$ is an indicator variable for whether a firm accepts payment for order flow. The significance of the coefficients corresponding to $X \cdot D_i$ then determines whether the coefficients for paid brokers are significantly different than unpaid brokers. If these coefficients, assuming they are significant, are negative for price improvement terms and positive for execution speed term, then the results would favor my hypothesis that Non-POF brokers route better than POF brokers; this in turn would imply that POF has a deleterious impact on order routing.And, lastly, with respect to the semiparametric least squares model (Ichimura, 1993), I regress using equation (3) using a Gaussian kernel to find $\theta = \beta / \beta_1$. Since this regression returns only the ratios between coefficients, I treat coefficient $\beta_1$, either percent price-improved or expected price improvement, as a given variable in their respective models. Then, I find the standard errors of the other variables. I perform the SLS regression on POF and Non-POF brokers separately and then compare the significance of the coefficients in each and the differences between the two in marginal effects. Significant differences in these would imply that the two types of brokers behave differently; the signs of these differences then indicate whether POF brokers perform better or worse than Non-POF brokers. 
@@ -298,11 +298,11 @@ Based on previous literature, I expect order routing that prioritizes rebate rev
 	\begin{tabular}{@{\extracolsep{0.6em}}lcccc} 
 		\\[-4ex]\hline  
 		\hline \\[-1.8ex]  
-		& \multicolumn{4}{c}{\textit{Dependent variable:}} \\  
+		& \multicolumn{4}{c}{\textit{Dependent variable: Market Share}} \\  
 		\cline{2-5}  
 		\\[-1.8ex] & (1) & (2) & (3) & (4)\\  
 		\hline \\[-1.8ex]  
-				Percent of Shares Price Improved   &     -0.0536         &                     &     -0.0461         &                     \\
+		Percent of Shares Price Improved   &     -0.0536         &                     &     -0.0461         &                     \\
 		&     (0.129)         &                     &     (0.131)         &                     \\
 		[0.5em]
 		Percent of Shares Price Improved  $\times$ D$_i$  &  -0.497\sym{**} &                     &      -0.503\sym{**} &                     \\
