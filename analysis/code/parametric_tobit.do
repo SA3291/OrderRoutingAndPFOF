@@ -1,7 +1,7 @@
 clear
 
 * Import data
-import delimited D:\Users\saketh\Documents\GitHub\OrderRoutingAndPFOF\data\processed\regression_data_levels.csv
+import delimited D:\Users\saketh\Documents\GitHub\Order-Routing-PFOF\data\processed\regression_data_levels.csv
 
 * Update data
 drop if ordertype != "Market"

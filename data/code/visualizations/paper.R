@@ -7,7 +7,7 @@ library(reshape)
 
 # Market Share TAQ Data
 
-filename <- '~/HonorsThesisData/Processed/overall_nms_mkt_shr_2017_03_22.csv'
+filename <- '../../processed/overall_nms_mkt_shr_2017_03_22.csv'
 rawdata <- read_csv(filename)
 
 rawdata$date <- as.Date(as.character(rawdata$date), format = "%Y%m%d")
@@ -32,7 +32,7 @@ data <- melt(select(as.data.frame(rawdata), date,
 
 cbPalette <- c("#E69F00", "#56B4E9", "#009E73", "#494949", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 
-tikz(file  = '~/Github/OrderRoutingAndPFOF/exhibits/descriptive/nms_mkt_shr.tex',
+tikz(file  = '../../../exhibits/descriptive/nms_mkt_shr.tex',
      height = 3, width = 6.5)
 
 ggplot(data = 

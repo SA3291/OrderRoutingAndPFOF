@@ -9,7 +9,7 @@ library(ggthemes)
 ## Params
 
 filename_output <- "../../analysis/html_tables/tables_all_market.html"
-folder <- '~/Github/OrderRoutingAndPFOF/data/processed/'
+folder <- '../../processed/'
 table_name <- 'All Brokers'
 
 data_df <- read_csv(paste(folder, 'regression_data_levels.csv', sep = ''))
@@ -36,7 +36,7 @@ ggplot(data = filter(data_605, OrderType == "Market" & idate >= 2017),
        subtitle = 'Orders between 100-499 shares',
          fill = 'Exchange') 
 
-ggsave("~/Github/OrderRoutingAndPFOF/exhibits/descriptive/primp_expamt.pdf", 
+ggsave("../../../exhibits/descriptive/primp_expamt.pdf", 
        width = 8, height = 4)
 
 # execution speed
@@ -54,6 +54,6 @@ ggplot(data = filter(data_605, OrderType == "Market" & idate >= 2017 & PrImp_Avg
        subtitle = 'Orders between 100-499 shares',
        fill = 'Exchange') 
 
-ggsave("~/Github/OrderRoutingAndPFOF/exhibits/descriptive/primp_avgt.pdf", 
+ggsave("../../../exhibits/descriptive/primp_avgt.pdf", 
        width = 8, height = 4)
 
